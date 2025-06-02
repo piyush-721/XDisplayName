@@ -27,7 +27,8 @@ function App() {
       <input type="text" id="fname" name="fname" value={name} onChange={handleNameChange} required/><br/>
       <label htmlFor="lname">Last name:</label>
       <input type="text" id="lname" name="lname" value={lastName} onChange={handleLastNameChange} required/><br /><br />
-      <input type="submit" value="Submit"/>
+      {/* <input type="submit" value="Submit"/> */}
+      <button type="submit">Submit</button>
     </form>
     {submitted && (<p>Full Name: {fullName}</p>)}
     
