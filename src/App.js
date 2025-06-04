@@ -1,37 +1,29 @@
-import { useState } from 'react';
-import './App.css';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  }
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-  }
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [fullName, setFullname] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFullName(name + " " + lastName);
+    setFullname(firstName + " " + lastName);
     setSubmitted(true);
   }
+  
   return (
   <div>
-    {/* <h1>{fullName}</h1> */}
     <h1>Full Name Display</h1>
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="fname">First name:</label>
-      <input type="text" id="fname" name="fname" value={name} onChange={handleNameChange} required/><br/>
-      <label htmlFor="lname">Last name:</label>
-      <input type="text" id="lname" name="lname" value={lastName} onChange={handleLastNameChange} required/><br /><br />
-      {/* <input type="submit" value="Submit"/> */}
-      <button type="submit">Submit</button>
+    <form onSubmit={(e) => handleSubmit(e)}>
+    <label htmlFor="name">First Name:</label>
+    <input name='name' value={firstName} onChange={(e) => setFirstName(e.target.value)}></input> <br/>
+    <label htmlFor="lastName">Last Name:</label>
+    <input name='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)}></input> <br/>
+    <button type="submit">Submit</button>
     </form>
-    {submitted && (<p>Full Name: {fullName}</p>)}
-    
+    {submitted && <p>Full Name: {fullName}</p>}
   </div>
   );
 
